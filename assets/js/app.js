@@ -12,7 +12,11 @@ run(function () {
     })();
     
     // a little inline controller
-    when('#welcome');
+    when('#welcome', function(){
+    
+      display('#map');
+    
+    });
     when('#settings', function() {
 		// load settings from store and make sure we persist radio buttons.
 		store.get('config', function(saved) {
@@ -33,6 +37,8 @@ run(function () {
             ,   zoom = saved ? saved.zoom || ui('zoom') : ui('zoom')
             ,   path = "http://maps.google.com/maps/api/staticmap?center=";
 			
+                x$('#mountme').attr('src', "http://img.freebase.com/api/trans/raw/m/02bk6m6"); 
+                
             navigator.geolocation.getCurrentPosition(function (position) {
                 var location = "" + position.coords.latitude + "," + position.coords.longitude;
                 alert(location);
