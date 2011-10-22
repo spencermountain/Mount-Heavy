@@ -7,15 +7,14 @@ run(function () {
         if (navigator.network.connection.type == Connection.NONE) {
             alert("No internet connection - we won't be able to show you any maps");
         } else {
+           display('#map');
             //alert("We can reach Google - get ready for some awesome maps!");
         }
     })();
     
     // a little inline controller
     when('#welcome', function(){
-    
-      display('#map');
-    
+        
     });
     when('#settings', function() {
 		// load settings from store and make sure we persist radio buttons.
@@ -47,7 +46,7 @@ run(function () {
                 path += location + "&sensor=false";
                 x$('img#static_map').attr('src', path);
                 
-                var src="http://mountain.spencermountain.user.dev.freebaseapps.com/dig?lat="+position.coords.latitude+"&lng="+ position.coords.longitude;
+                var src="http://mountain.spencermountain.user.dev.freebaseapps.com/smart?lat="+position.coords.latitude+"&lng="+ position.coords.longitude;
                 x$('#mountme').attr('src', src);
                 
             }, function () {
